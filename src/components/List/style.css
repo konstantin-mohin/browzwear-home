@@ -1,0 +1,23 @@
+.list {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	overflow-y: auto;
+	height: 390px
+}
+
+.list > li {
+	padding: 15px 10px;
+	color: #1459ff;
+	border-radius: 6px;
+}
+
+.list > li:hover {
+	cursor: pointer;
+}
+
+.list > li.selected {
+	background-color: #1459ff;
+	color: #fff;
+}
+
