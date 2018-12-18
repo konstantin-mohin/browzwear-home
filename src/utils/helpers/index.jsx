@@ -35,7 +35,7 @@ export const sortObjByLength = (prev, next) =>
 	Object.keys(next).length - Object.keys(prev).length;
 
 export const getGeocodeAddress = (obj) => obj &&
-	`${obj.address}, ${obj.postalcode}, ${obj.city}, ${obj.country}`;
+	`${obj.companyname}, ${obj.postalcode}, ${obj.city}, ${obj.country}`;
 
 export const sortClients = (data) => {
 	let grouped = groupBy(data, ['country', 'city']);

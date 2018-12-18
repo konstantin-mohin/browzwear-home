@@ -24,13 +24,9 @@ class List extends React.PureComponent {
 
 
 List.propTypes = {
-	// title: PropTypes.string.isRequired,
 	data: PropTypes.array.isRequired,
 	children: PropTypes.func.isRequired,
 };
 
-List.defaultProps = {
-	selected: false
-};
 
 export default List;

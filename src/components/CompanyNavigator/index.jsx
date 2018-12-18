@@ -9,6 +9,7 @@ import TableBody from 'components/Table/TableBody';
 import TableHead from 'components/Table/TableHead';
 import TableHeadCell from 'components/Table/TableHeadCell';
 import List from 'components/List';
+import Item from 'components/List/ListItem';
 import {
 	getGeocodeAddress,
 	sortClients,
@@ -20,14 +21,7 @@ import {
 class CompanyNavigator extends React.Component {
 	constructor(props) {
 		super(props);
-		// this.groupedByCountry = groupBy(this.props.data, ['country', 'city']);
-
-		// const countriesByCities = Object.values(this.groupedByCountry).sort(sortObjByLength);
-		// this.sorted = countriesByCities.map(city =>
-		// 	Object.values(city).sort(sortArrByLength)
-		// );
 		this.sortedData = sortClients(this.props.data);
-
 		this.state = {
 			countryIndex: 0,
 			cityIndex: 0,
@@ -97,13 +91,13 @@ class CompanyNavigator extends React.Component {
 							<List data-index-type="countryIndex" data={sortedData} className={'list'}>
 								{
 									(country, index) =>
-										<li
+										<Item
 											data-index={index}
 											key={country[0][0].id}
-											{...this.activeClass(index===countryIndex)}
-											>
-												{country[0][0].country}
-										</li>
+											{...this.activeClass(index === countryIndex)}
+											title={country[0][0].country}
+										/>
+
 								}
 							</List>
 						</TableCell>
@@ -111,13 +105,12 @@ class CompanyNavigator extends React.Component {
 							<List data-index-type="cityIndex" data={sortedData[countryIndex]} className={'list'}>
 								{
 									(city, index) =>
-										<li
+										<Item
 											data-index={index}
 											key={city[0].id}
 											{...this.activeClass(index === cityIndex)}
-											>
-											{city[0].city}
-										</li>
+											title={ city[0].city }
+										/>
 								}
 							</List>
 						</TableCell>
@@ -125,13 +118,12 @@ class CompanyNavigator extends React.Component {
 							<List data-index-type="companyIndex" data={sortedData[countryIndex][cityIndex]} className={'list'}>
 								{
 									(company, index) =>
-										<li
+										<Item
 											data-index={index}
 											key={company.id}
 											{...this.activeClass(index === companyIndex)}
-											>
-												{company.companyname}
-											</li>
+											title={company.companyname}
+										/>
 								}
 							</List>
 						</TableCell>
